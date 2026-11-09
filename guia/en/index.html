@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Uncensored AI Providers — where to use uncensored AI, what it costs, and what to check</title>
-<meta name="description" content="INEMA guide to uncensored AI providers: uncensored and abliterated models via API, chat, rented GPU, or on your computer. Comparison table with prices checked on Nov 9, 2026, stated privacy practices, and step-by-step instructions.">
+<title>Uncensored AI Providers — where to use unfiltered AI, how much it costs, and what to check</title>
+<meta name="description" content="INEMA guide to uncensored AI providers: uncensored and abliterated models via API, chat, rented GPU, or your own computer. Comparison table with prices checked on Nov 9, 2026, stated privacy practices, and step-by-step instructions.">
 <link rel="alternate" hreflang="pt-BR" href="https://inematds.github.io/provedores-semcensura/guia/">
 <link rel="alternate" hreflang="en" href="https://inematds.github.io/provedores-semcensura/guia/en/">
 <link rel="alternate" hreflang="es" href="https://inematds.github.io/provedores-semcensura/guia/es/">
@@ -128,6 +128,7 @@
   body.light .gloss dt{color:var(--txt)}
   .gloss dd{margin:0;color:var(--mut);font-size:.92rem}
   @media(max-width:600px){.gloss dl{grid-template-columns:1fr}.gloss dd{margin-bottom:6px}}
+  ul.ml{margin:0;padding-left:1.1em} ul.ml li{margin:0 0 .45em} ul.ml code{display:block;font-size:.8em;color:var(--mut)}
   .swipe{display:none;font-size:.85rem;color:var(--mut);margin:0 0 8px}
   @media(max-width:1020px){.swipe{display:block}}
   .refs li{margin:.3em 0}
@@ -178,107 +179,124 @@
   <div class="glow"></div>
   <div class="wrap">
     <div>
-      <span class="chip">INEMA guide · checked on Nov 9, 2026</span>
-      <h1>Uncensored AI: <span class="amb">where to use it</span>, what it costs, and what to check</h1>
-      <p class="lead">Seven options side by side, from a ready-to-use API to a model running on your computer, with pricing, stated privacy practices, and what remains unconfirmed.</p>
+      <span class="chip">INEMA Guide · checked on Nov 9, 2026</span>
+      <h1>Uncensored AI: <span class="amb">where to use it</span>, how much it costs, and what to check</h1>
+      <p class="lead">Seven options side by side, from a ready-to-use API to a model running on your computer, with prices, stated privacy practices, and what no one has confirmed.</p>
       <div class="cta">
         <a class="btn" href="#provedores">View the table</a>
         <a class="btn ghost" href="#guia">Start the step-by-step guide</a>
       </div>
     </div>
-    <figure><img src="../assets/banner-en.jpg" alt="Uncensored AI banner: where to use it, what it costs, and what to check"></figure>
+    <figure><img src="../assets/banner-en.jpg" alt="Uncensored AI banner: where to use it, how much it costs, and what to check"></figure>
   </div>
 </header>
 
 <section id="resumo" class="resumo"><div class="wrap">
   <span class="chip">In short</span>
-  <p>This guide shows where to find “uncensored” AI models—in other words, versions that do not refuse requests. It is for people testing their own system's security, doing research, or simply looking for an assistant that does not shut down on sensitive topics. A table compares API providers, chat services, rented GPUs, and models running on your own computer, including prices, stated privacy practices, and whether identity verification is required. To get started, just read the guide; the examples require an account with your chosen provider or Ollama installed.</p>
+  <p>This guide shows where to find “uncensored” AI models, meaning versions that do not refuse requests. It is for people testing the security of their own systems, doing research, or simply wanting an assistant that does not freeze up on sensitive topics. The table compares providers offering APIs, chat, rented GPUs, and local use on your own computer, with prices, stated privacy practices, and whether they ask for identity verification. To use this guide, just read it; the examples require an account with your chosen provider or Ollama installed.</p>
 </div></section>
 
 <section id="oque"><div class="wrap">
   <span class="chip">What it is</span>
-  <h2>Three ways to remove the guardrails, and the trade-offs of each</h2>
-  <p class="sub">A standard model learns to refuse certain requests. Publishers of “uncensored” versions remove that refusal in different ways, and each method changes what you get.</p>
-  <figure style="margin:0 0 26px;border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 80px -30px #000"><img src="../assets/banner-grade-en.jpg" alt="Banner showing provider types: ready-to-use API, router, rented GPU, local Ollama, Hugging Face, and privacy" loading="lazy" style="width:100%;display:block"></figure>
+  <h2>Three ways to remove the guardrails, and the cost of each</h2>
+  <p class="sub">A standard model learns to refuse certain requests. Publishers of “uncensored” versions remove that refusal in different ways, and each approach changes what you get.</p>
+  <figure style="margin:0 0 26px;border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 80px -30px #000"><img src="../assets/banner-grade-en.jpg" alt="Banner showing provider types: ready-to-use API, router, rented GPU, local with Ollama, Hugging Face, and privacy" loading="lazy" style="width:100%;display:block"></figure>
   <div class="grid g3">
-    <div class="card"><h3><svg width="22" height="22"><use href="#i-sliders"/></svg>Uncensored (fine-tune)</h3><p>The model is trained again using examples without refusals. The Dolphin family is one example. Training takes resources, but the result tends to be more stable. This description of Dolphin reflects general knowledge in the field; check the model card for each version.</p></div>
-    <div class="card"><h3><svg width="22" height="22"><use href="#i-scissors"/></svg>Abliterated</h3><p>No retraining is involved. The technique finds the “refusal direction” in the model's weights (a single direction in the model's activations, according to the paper by Arditi et al., 2024) and removes it through orthogonalization. It is fast and inexpensive, which is why hundreds of versions exist.</p></div>
-    <div class="card"><h3><svg width="22" height="22"><use href="#i-unlock"/></svg>Jailbroken</h3><p>The model stays the same. Only the prompt changes: it is crafted to trick the rules. It works until the provider fixes the issue, can break without warning, and often violates the terms of service. This guide does not cover jailbreaking.</p></div>
+    <div class="card"><h3><svg width="22" height="22"><use href="#i-sliders"/></svg>Uncensored (fine-tune)</h3><p>The model is trained again with examples that do not include refusals. The Dolphin family is one example. Training costs money, but the results tend to be more stable. This description of Dolphin is general knowledge in the field; check each version’s model card.</p></div>
+    <div class="card"><h3><svg width="22" height="22"><use href="#i-scissors"/></svg>Abliterated</h3><p>No retraining is involved. The technique finds the “refusal direction” in the weights (a single direction in the model’s activations, according to the Arditi et al. 2024 paper) and removes it through orthogonalization. It is fast and cheap, which is why hundreds of versions exist.</p></div>
+    <div class="card"><h3><svg width="22" height="22"><use href="#i-unlock"/></svg>Jailbroken</h3><p>The model itself remains unchanged. What changes is the request: a prompt crafted to trick its rules. It works until the provider patches it, can break without warning, and often violates the terms of use. This guide does not cover jailbreaking.</p></div>
   </div>
-  <div class="warn" style="margin-top:22px"><p><strong>What you give up without guardrails.</strong> Uncensored models hallucinate more and may lose quality: the paper that popularized abliteration shows benchmark scores dropping for Llama 3 8B after the procedure. In safety analysis, it also reports false positives with high confidence. There are no guardrails: the model may give dangerous or incorrect answers just as readily. Check everything it tells you.</p></div>
+  <div class="warn" style="margin-top:22px"><p><strong>What you lose without guardrails.</strong> Uncensored models hallucinate more and may lose quality: the paper that popularized abliteration itself shows benchmark scores dropping for Llama 3 8B after the procedure. In safety analysis, it also reports a false positive with high confidence. And there are no guardrails: it will give dangerous or incorrect answers all the same. Check everything it says.</p></div>
 </div></section>
 
 <section id="huggingface"><div class="wrap">
   <span class="chip">Where to find the models</span>
   <h2>How to find uncensored models on Hugging Face</h2>
-  <p class="sub">Nearly every open uncensored model originates on Hugging Face, the largest public model repository. Many providers in the table below source their models from there.</p>
+  <p class="sub">Almost every open uncensored model originates on Hugging Face, the largest public model repository. The providers in the table below source many of their models there.</p>
   <div class="grid g3">
     <div class="card"><h3><svg width="22" height="22"><use href="#i-search"/></svg>Search by name</h3><p>At <a href="https://huggingface.co/models" target="_blank" rel="noopener">huggingface.co/models</a>, search for <code>abliterated</code>, <code>uncensored</code>, <code>heretic</code> (a recent variant), or <code>dolphin</code>. Sort by downloads or likes.</p></div>
-    <div class="card"><h3><svg width="22" height="22"><use href="#i-layers"/></svg>Same model, many versions</h3><p>The same base model appears in many editions: different authors (huihui-ai, mlabonne, orcarouter) and different sizes (quantizations). To run one with Ollama, filter for <code>GGUF</code>.</p></div>
-    <div class="card"><h3><svg width="22" height="22"><use href="#i-file"/></svg>Read the model card</h3><p>Before downloading, check the card for the base model, method used, quantization, and benchmarks. Claims such as “0% refusal without loss” come from the author, not independent testing.</p></div>
+    <div class="card"><h3><svg width="22" height="22"><use href="#i-layers"/></svg>Same model, multiple versions</h3><p>The same base model appears in several editions, from different authors (huihui-ai, mlabonne, orcarouter) and in different sizes (quantizations). To run it in Ollama, filter for <code>GGUF</code>.</p></div>
+    <div class="card"><h3><svg width="22" height="22"><use href="#i-file"/></svg>Read the model card</h3><p>Before downloading, check the card for the base model, the method used, the quantization, and whether benchmarks are included. Claims like “0% refusal with no loss” come from the author, not an independent test.</p></div>
   </div>
 </div></section>
 
 <section id="provedores"><div class="wrap">
   <span class="chip">Comparison</span>
   <h2>Provider comparison table</h2>
-  <p class="sub">Prices in US$ per 1 million tokens (input / output), unless otherwise noted, checked on Nov 9, 2026 on each provider's public pages. Prices change without notice: check the site before paying. “Not confirmed” means we could not find the information, not that it does not exist.</p>
+  <p class="sub">Prices in US$ per 1 million tokens (input / output), unless noted, checked on Nov 9, 2026 on each provider’s public pages. They can change without notice: check the site before paying. “Not confirmed” means we did not find the information, not that it does not exist.</p>
   <details class="gloss"><summary>Quick glossary of table terms</summary>
     <dl>
-      <dt>Private / Anonymized</dt><dd>Venice privacy modes. Private: the model runs on a Venice or partner GPU with contractually guaranteed zero retention. Anonymized: the request is sent to a third-party provider, which can see and may store its contents.</dd>
-      <dt>TEE</dt><dd>Trusted execution environment: an isolated part of the hardware that even the server owner cannot inspect, with an attestation that it is running the correct code.</dd>
+      <dt>Private / Anonymized</dt><dd>Venice privacy modes. Private: the model runs on a Venice or partner GPU with contractually guaranteed zero retention. Anonymized: the request goes to a third-party provider, which can see and may store its contents.</dd>
+      <dt>TEE</dt><dd>Trusted Execution Environment: an isolated part of the hardware that even the server owner cannot inspect, with attestation that it is running the correct code.</dd>
       <dt>E2EE</dt><dd>End-to-end encryption: the request leaves your device encrypted and is opened only inside that isolated hardware.</dd>
       <dt>ZDR</dt><dd>Zero data retention: the provider promises not to store requests or responses.</dd>
       <dt>Quantization</dt><dd>Storing model weights at lower precision (Q4 = 4 bits per weight, for example). The file becomes much smaller and fits on a smaller GPU, with some loss of quality.</dd>
       <dt>GGUF</dt><dd>A quantized model file format used by Ollama and llama.cpp.</dd>
-      <dt>MLX</dt><dd>Apple's library for running models on Apple Silicon chips (M1 and later).</dd>
-      <dt>vLLM</dt><dd>An open-source server for running models on GPUs with high throughput; it also exposes an OpenAI-compatible API.</dd>
-      <dt>Red team</dt><dd>A team or test that attacks its own system, with authorization, to find flaws before outsiders do.</dd>
+      <dt>MLX</dt><dd>Apple’s library for running models on Apple Silicon chips (M1 and later).</dd>
+      <dt>vLLM</dt><dd>An open-source server for running models on GPUs at high throughput; it also exposes an OpenAI-compatible API.</dd>
+      <dt>Token / “per 1 million tokens”</dt><dd>A token is a piece of text the model reads or writes, usually part of a word. Providers charge per million tokens: one price for what you send (input) and another for what the model replies (output).</dd>
+      <dt>Heretic</dt><dd>A label for a recent refusal-removal variant, similar to abliteration. It appears in model names, such as GLM 4.7 Flash Heretic.</dd>
+      <dt>DIEM</dt><dd>A Venice token on the Base network. Each staked DIEM is worth US$ 1 in API credit per day.</dd>
+      <dt>Pod</dt><dd>The GPU machine you rent on RunPod. You are charged by the second while it is running.</dd>
+      <dt>Red team</dt><dd>A team or test that attacks your own system, with authorization, to find weaknesses before someone outside does.</dd>
     </dl>
   </details>
   <p class="swipe">Swipe the table sideways →</p>
   <div class="tbl"><table>
     <thead><tr><th>Provider</th><th>Type</th><th>Uncensored models</th><th>Approx. price</th><th>Identity required?</th><th>Stated privacy / retention</th><th>OpenAI-compatible API?</th><th>Notes</th></tr></thead>
     <tbody>
-      <tr class="top"><td><strong>Venice</strong><br><span class="tag">featured</span></td><td>Ready-to-use API + chat</td><td>DeepSeek V4.1 Flash 1017 Uncensored; Venice Uncensored 1.2; Gemma 4 Uncensored; E2EE versions and GLM 4.7 Flash Heretic</td><td>Uncensored 1.2: 0.20 / 0.90<br>Gemma 4 Uncensored: 0.1625 / 0.50<br>DeepSeek V4.1 Flash Uncensored: 0.33 / 1.32<br>Pro plan: US$ 18/month on annual billing only (US$ 216/year); the site lists US$ 36 in annual savings, which works out to about US$ 21 month to month</td><td>Account required (email or wallet). ID document: <span class="nc">not confirmed; check the site</span></td><td>Private mode: contractually guaranteed zero retention. TEE/E2EE on some models. Anonymized mode: the third-party provider sees the request. Stated by the provider; no independent audit found</td><td>Yes</td><td>Pay by card, crypto, or DIEM. The subscription does not include unlimited API usage. The model being retired on Nov 15, 2026 is <code>deepseek-v4-1-flash</code> (without “1017”); <code>deepseek-v4-1-flash-1017-uncensored</code> remains available and is the API's default model</td></tr>
-      <tr><td><strong>abliteration.ai</strong></td><td>Ready-to-use API</td><td>Abliterated Large v2 (based on GLM-5.3, according to the site) and Large Flash</td><td>US$ 20, 50, and 200/month plans (converted into credits). Per token: <span class="nc">not confirmed</span>; Venice resells Large v2 at 3.00 / 5.00</td><td>Sign-up with Google, GitHub, Microsoft, or email; terms require users to be 18+. ID document: <span class="nc">not confirmed</span></td><td>“Zero data retention”; prompts are excluded from logs. Stated by the site itself</td><td>Yes, and Anthropic's Messages API</td><td>Focuses on security and red teaming. Terms prohibit illegal use</td></tr>
-      <tr><td><strong>orcarouter</strong> (Ollama profile)</td><td>Local</td><td>Qwen3.8-27B-Uncensored; Qwen3.8-Flash-Next-Uncensored (MLX, Apple Silicon)</td><td>Free (hardware costs are yours)</td><td>No, download only</td><td>Runs on your machine</td><td>Yes, through Ollama at <code>localhost:11434/v1</code></td><td>Do not confuse it with the same team's orcarouter.ai gateway, which is not uncensored</td></tr>
-      <tr><td><strong>OpenRouter</strong></td><td>Router</td><td>Dolphin Mistral 24B Venice Edition; Hermes 4 405B; Cydonia 24B; Skyfall 36B; Magnum v4 72B; Euryale 70B</td><td>Dolphin Venice: 0.20 / 0.90<br>Hermes 4 405B: 1.00 / 3.00<br>Magnum v4 72B: 2.50 / 5.00</td><td>Account required. Crypto: <span class="nc">not confirmed</span></td><td>Depends on the provider behind each model; logging and ZDR controls are available in the account</td><td>Yes</td><td>Hermes, Magnum, and Euryale are less restrictive, but are not necessarily 100% refusal-free</td></tr>
-      <tr><td><strong>Featherless</strong></td><td>Ready-to-use API (subscription)</td><td>Catalog of 40,000+ Hugging Face models; which are uncensored: <span class="nc">not confirmed</span></td><td>Chat: US$ 25/month (unlimited tokens, 32K context)<br>Developer: US$ 50/month in credits</td><td>Account + payment</td><td>Policy says it does not collect prompts or responses (text dated Jun 10, 2024)</td><td><span class="nc">Not confirmed</span></td><td>The Chat plan prohibits API or automated use; use Developer for API access</td></tr>
-      <tr><td><strong>RunPod</strong></td><td>Rented GPU</td><td>Any model you upload (vLLM, Ollama)</td><td>Per hour, Secure Cloud: A100 80GB US$ 1.79; H100 PCIe US$ 2.89; H100 SXM US$ 3.99; RTX Pro 6000 US$ 2.49<br>Community Cloud, starting at: A100 US$ 1.19–1.39; H100 PCIe US$ 1.99; H100 SXM US$ 2.69; RTX Pro 6000 US$ 1.69</td><td>Account + card</td><td>You control the machine and logs</td><td>Yes, if you run vLLM or Ollama</td><td>Billed by the second. Community Cloud is cheaper and uses third-party machines; Secure Cloud runs in partner data centers. Turn off the pod when you stop using it</td></tr>
-      <tr><td><strong>Local with Ollama</strong></td><td>Local</td><td>huihui-ai, orcarouter, mlabonne, and others in GGUF</td><td>Free + hardware</td><td>No</td><td>Complete: nothing leaves your computer</td><td>Yes, at <code>localhost:11434/v1</code></td><td>More private and cheaper in the long run; quality depends on your GPU</td></tr>
+      <tr class="top"><td><strong>Venice</strong><br><span class="tag">featured</span></td><td>Ready-to-use API + chat</td><td><ul class="ml"><li>GLM 4.7 Flash Heretic <code>olafangensan-glm-4.7-flash-heretic</code> 0.07 / 0.40</li><li>Gemma 4 Uncensored <code>gemma-4-uncensored</code> 0.1625 / 0.50</li><li>Venice Uncensored 1.2 <code>venice-uncensored-1-2</code> 0.20 / 0.90</li><li>DeepSeek V4.1 Flash 1017 Uncensored <code>deepseek-v4-1-flash-1017-uncensored</code> 0.33 / 1.32</li><li>DeepSeek V4.1 Flash 1017 Abliterated (E2EE) <code>e2ee-deepseek-v4-1-flash-1017-abliterated</code> 0.375 / 1.50</li><li>Gemma 4 26B A4B Uncensored (E2EE) <code>e2ee-gemma-4-26b-a4b-uncensored-p</code> 0.19 / 0.88</li></ul></td><td>Per token: see each model<br>Pro plan: US$ 18/month on annual billing only (US$ 216/year); the site indicates savings of US$ 36 per year, which works out to about US$ 21 month to month</td><td>Account required (email or wallet). ID document: <span class="nc">not confirmed; check the site</span></td><td>Private mode: contractually guaranteed zero retention. TEE/E2EE on some models. Anonymized mode: the third-party provider can see the request. Provider-stated; no independent audit found</td><td>Yes</td><td>Pay by card, crypto, or DIEM. The subscription does not include unlimited API access. The model being retired on Nov 15, 2026 is <code>deepseek-v4-1-flash</code> (without “1017”); <code>deepseek-v4-1-flash-1017-uncensored</code> remains available and is the API’s default model</td></tr>
+      <tr><td><strong>abliteration.ai</strong></td><td>Ready-to-use API</td><td>Abliterated Large v2 (based on GLM-5.3, according to the site) and Large Flash</td><td>US$ 20, 50, and 200/month plans (converted to credits). Per token: <span class="nc">not confirmed</span>; Venice resells Large v2 at 3.00 / 5.00</td><td>Sign up with Google, GitHub, Microsoft, or email; terms require users to be 18+. ID document: <span class="nc">not confirmed</span></td><td>“Zero data retention,” prompts excluded from logs. Stated by the site itself for its API. Note: Venice resells the same Large v2 in Anonymized mode, where the third-party provider can see the request</td><td>Yes, and also Anthropic’s Messages API</td><td>Focused on security and red teaming. Terms prohibit illegal use</td></tr>
+      <tr><td><strong>orcarouter</strong> (Ollama profile)</td><td>Local</td><td>Qwen3.8-27B-Uncensored; Qwen3.8-Flash-Next-Uncensored (MLX, Apple Silicon)</td><td>Free (you provide the hardware)</td><td>No, download only</td><td>Runs on your machine</td><td>Yes, through Ollama at <code>localhost:11434/v1</code></td><td>Do not confuse it with the orcarouter.ai gateway from the same team, which is not uncensored</td></tr>
+      <tr><td><strong>OpenRouter</strong></td><td>Router</td><td>Dolphin Mistral 24B Venice Edition; Hermes 4 405B; Cydonia 24B; Skyfall 36B; Magnum v4 72B; Euryale 70B</td><td>Dolphin Venice: 0.20 / 0.90<br>Hermes 4 405B: 1.00 / 3.00<br>Magnum v4 72B: 2.50 / 5.00</td><td>Account required. Crypto: <span class="nc">not confirmed</span></td><td>Depends on the provider behind each model; logging and ZDR controls are available in the account</td><td>Yes</td><td>Hermes, Magnum, and Euryale are less restrictive, but not necessarily 100% refusal-free</td></tr>
+      <tr><td><strong>Featherless</strong></td><td>Ready-to-use API (subscription)</td><td>Catalog of 40,000+ Hugging Face models; which ones are uncensored: <span class="nc">not confirmed</span></td><td>Chat: US$ 25/month (unlimited tokens, 32K context)<br>Developer: US$ 50/month in credits</td><td>Account + payment</td><td>Policy says it does not collect prompts or responses (text dated Jun 10, 2024)</td><td>Yes, base URL <code>https://api.featherless.ai/v1</code></td><td>The Chat plan prohibits API or automated use; use Developer for API access</td></tr>
+      <tr><td><strong>RunPod</strong></td><td>Rented GPU</td><td>Any model you deploy (vLLM, Ollama)</td><td>Per hour, Secure Cloud: A100 80GB US$ 1.79; H100 PCIe US$ 2.89; H100 SXM US$ 3.99; RTX Pro 6000 US$ 2.49<br>Community Cloud, starting at: A100 US$ 1.19–1.39; H100 PCIe US$ 1.99; H100 SXM US$ 2.69; RTX Pro 6000 US$ 1.69</td><td>Account + card</td><td>You control the machine and logs</td><td>Yes, if you run vLLM or Ollama</td><td>Charged by the second. Community Cloud is cheaper and uses third-party machines; Secure Cloud runs in partner data centers. Shut down the pod when you are done</td></tr>
+      <tr><td><strong>Local with Ollama</strong></td><td>Local</td><td>huihui-ai, orcarouter, mlabonne, and others in GGUF</td><td>Free + hardware</td><td>No</td><td>Complete: nothing leaves your computer</td><td>Yes, at <code>localhost:11434/v1</code></td><td>More private and cheaper over the long term; quality depends on your GPU</td></tr>
     </tbody>
   </table></div>
-  <p class="note">We also checked Novita, Together, and DeepInfra: we could not find uncensored models on their public pages. Hugging Face Inference Endpoints rents GPUs by the hour to run any model. Vast.ai was not researched.</p>
+  <p class="note">We also checked Novita, Together, and DeepInfra: we did not find uncensored models on their public pages. Hugging Face Inference Endpoints rents GPUs by the hour so you can deploy any model. Vast.ai was not researched.</p>
 </div></section>
 
 <section id="escolher"><div class="wrap">
   <span class="chip">Which one to choose</span>
   <h2>Start with your situation</h2>
-  <p class="sub">There is no single best provider. Choose the one that fits what you want to do right now.</p>
+  <p class="sub">There is no single best provider. There is the one that fits what you want to do right now.</p>
   <div class="grid g4">
-    <div class="card"><h3><svg width="22" height="22"><use href="#i-zap"/></svg>I want to test quickly</h3><p>Create a Venice account and use the chat or API with Venice Uncensored 1.2. This takes the fewest steps.</p><span class="go">Go to: <strong>Venice</strong></span></div>
-    <div class="card"><h3><svg width="22" height="22"><use href="#i-home"/></svg>I don't want to send anything outside</h3><p>Run an abliterated model on your computer with Ollama. Nothing leaves the machine. Larger models need a reasonably powerful GPU.</p><span class="go">Go to: <strong>Local with Ollama</strong></span></div>
-    <div class="card"><h3><svg width="22" height="22"><use href="#i-coins"/></svg>I need an inexpensive API</h3><p>Venice (Gemma 4 Uncensored at 0.1625 / 0.50) or OpenRouter (Dolphin Venice at 0.20 / 0.90). Both accept the OpenAI format.</p><span class="go">Go to: <strong>Venice or OpenRouter</strong></span></div>
-    <div class="card"><h3><svg width="22" height="22"><use href="#i-eye"/></svg>I want maximum privacy</h3><p>Local is the only option where you do not have to rely on anyone's word. If you need the cloud, consider a rented GPU under your control or Venice's E2EE modes.</p><span class="go">Go to: <strong>Local, RunPod, or Venice E2EE</strong></span></div>
+    <div class="card"><h3><svg width="22" height="22"><use href="#i-zap"/></svg>I want to test quickly</h3><p>Create a Venice account and use the chat or API with Venice Uncensored 1.2. It takes the fewest steps.</p><span class="go">Go to: <strong>Venice</strong></span></div>
+    <div class="card"><h3><svg width="22" height="22"><use href="#i-home"/></svg>I do not want to send anything outside</h3><p>Run an abliterated model on your computer with Ollama. Nothing leaves the machine. Larger models require a reasonably powerful GPU.</p><span class="go">Go to: <strong>Local with Ollama</strong></span></div>
+    <div class="card"><h3><svg width="22" height="22"><use href="#i-coins"/></svg>I need a low-cost API</h3><p>At Venice, the cheapest option today is GLM 4.7 Flash Heretic (0.07 / 0.40), followed by Gemma 4 Uncensored (0.1625 / 0.50). On OpenRouter, Dolphin Venice costs 0.20 / 0.90. They all accept the OpenAI format. Cheaper does not mean better: test the quality on your task.</p><span class="go">Go to: <strong>Venice or OpenRouter</strong></span></div>
+    <div class="card"><h3><svg width="22" height="22"><use href="#i-eye"/></svg>I want maximum privacy</h3><p>Local use is the only option that does not depend on anyone’s word. If you need the cloud, choose a rented GPU under your control or Venice’s E2EE modes.</p><span class="go">Go to: <strong>Local, RunPod, or Venice E2EE</strong></span></div>
   </div>
 </div></section>
 
 <section id="guia"><div class="wrap">
   <span class="chip">Step by step</span>
   <h2>Three ways to get started today</h2>
-  <p class="sub">The examples use addresses checked against public documentation on Nov 9, 2026. No API keys are shown here: create one on the provider's site and store it in an environment variable.</p>
+  <p class="sub">The examples use endpoints checked against public documentation on Nov 9, 2026. No API keys are shown here: create your own on the provider’s site and store it in an environment variable.</p>
 
   <div class="step"><div class="b">1</div><div>
     <h3>Call Venice through its OpenAI-compatible API</h3>
     <p>Venice follows the OpenAI specification, so any OpenAI library works if you change the endpoint. Create a key at <a href="https://venice.ai/settings/api" target="_blank" rel="noopener">venice.ai/settings/api</a> and store it in your terminal. The API uses credits: the subscription includes only a small monthly allowance (Pro: US$ 1; free accounts: none), so add funds first. Without a balance, the API returns <code>402</code> <code>INSUFFICIENT_BALANCE</code>.</p>
+    <p><strong>Linux, Mac, or WSL (bash terminal):</strong></p>
 <pre><span class="k">export</span> VENICE_API_KEY=<span class="s">"paste-your-key-here"</span>   <span class="c"># never put it in code or git</span>
 
 <span class="k">curl</span> https://api.venice.ai/api/v1/chat/completions \
   -H <span class="s">"Authorization: Bearer $VENICE_API_KEY"</span> \
   -H <span class="s">"Content-Type: application/json"</span> \
   -d <span class="s">'{"model":"venice-uncensored-1-2","messages":[{"role":"user","content":"Explain what abliteration is in 3 sentences."}]}'</span></pre>
-    <p>The same in Python, using the <code>openai</code> library (<code>pip install openai</code>):</p>
+    <p><strong>Windows (PowerShell):</strong></p>
+<pre><span class="k">$env:</span>VENICE_API_KEY=<span class="s">"paste-your-key-here"</span>   <span class="c"># valid only for this window</span>
+
+<span class="k">$body</span> = @{ model=<span class="s">"venice-uncensored-1-2"</span>; messages=@(@{ role=<span class="s">"user"</span>; content=<span class="s">"Explain what abliteration is in 3 sentences."</span> }) } | ConvertTo-Json -Depth 5
+<span class="k">Invoke-RestMethod</span> -Uri https://api.venice.ai/api/v1/chat/completions -Method Post -Headers @{ Authorization=<span class="s">"Bearer $env:VENICE_API_KEY"</span> } -ContentType <span class="s">"application/json; charset=utf-8"</span> -Body <span class="k">$body</span></pre>
+    <p>The same in Python, using the <code>openai</code> library. First create an isolated environment so you do not change the system Python:</p>
+<pre><span class="c"># Linux, Mac, or WSL</span>
+<span class="k">python3</span> -m venv .venv &amp;&amp; <span class="k">source</span> .venv/bin/activate
+<span class="k">pip install</span> openai
+
+<span class="c"># Windows (PowerShell)</span>
+<span class="k">py</span> -m venv .venv; .venv\Scripts\Activate.ps1
+<span class="k">pip install</span> openai</pre>
 <pre><span class="k">import</span> os
 <span class="k">from</span> openai <span class="k">import</span> OpenAI
 
@@ -291,14 +309,14 @@ r = client.chat.completions.create(
     messages=[{<span class="s">"role"</span>: <span class="s">"user"</span>, <span class="s">"content"</span>: <span class="s">"List 3 risks of an uncensored model."</span>}],
 )
 print(r.choices[0].message.content)</pre>
-    <p>Some models are available only on paid plans and return error 401 <code>PRO_ONLY_MODEL</code>. IDs change: check the current list at <a href="https://docs.venice.ai/overview/pricing" target="_blank" rel="noopener">docs.venice.ai</a>. abliteration.ai works the same way, with <code>base_url="https://api.abliteration.ai/v1"</code> and its API key.</p>
+    <p>Some models are available only on paid plans and return a 401 <code>PRO_ONLY_MODEL</code> error. IDs change: check the current list at <a href="https://docs.venice.ai/overview/pricing" target="_blank" rel="noopener">docs.venice.ai</a>. abliteration.ai works the same way, using <code>base_url="https://api.abliteration.ai/v1"</code> and its own key.</p>
   </div></div>
 
   <div class="step"><div class="b">2</div><div>
-    <h3>Run it on your computer with Ollama</h3>
-    <p>First, install Ollama. On Windows and Mac, download it from <a href="https://ollama.com/download" target="_blank" rel="noopener">ollama.com/download</a>. On Linux:</p>
+    <h3>Run a model on your computer with Ollama</h3>
+    <p>First install Ollama. On Windows and Mac, download it from <a href="https://ollama.com/download" target="_blank" rel="noopener">ollama.com/download</a>. On Linux:</p>
 <pre><span class="k">curl</span> -fsSL https://ollama.com/install.sh | sh</pre>
-    <p><strong>Memory rule:</strong> the model must fit in your graphics card's memory (VRAM), with 1 to 2 GB left over for the conversation. The Ollama file listing shows the size: the default quantized version of <code>orcarouter/Qwen3.8-27B-Uncensored</code> is 18 GB, so it needs a 24 GB GPU. Without a GPU, it runs in your computer's memory, but much more slowly.</p>
+    <p><strong>Memory rule:</strong> the model must fit in your graphics card’s memory (VRAM), with 1 to 2 GB to spare for the conversation. The Ollama file listing shows its size: <code>orcarouter/Qwen3.8-27B-Uncensored</code> (the default quantized version) is 18 GB, so it needs a 24 GB GPU. Without a GPU it runs in your computer’s memory, but much more slowly.</p>
     <p>Choose based on your machine (sizes checked in the Ollama registry on Nov 9, 2026):</p>
 <pre><span class="c"># GPU with 24 GB or more (18 GB file)</span>
 <span class="k">ollama run</span> orcarouter/Qwen3.8-27B-Uncensored
@@ -311,9 +329,10 @@ print(r.choices[0].message.content)</pre>
     <p>The first time, the command downloads the model; after that, it opens the chat directly. To exit, type <code>/bye</code>.</p>
 <pre>
 
-<span class="c"># the same model through Ollama's local API</span>
+<span class="c"># the same model through Ollama’s local API (Ollama must be running;</span>
+<span class="c"># if you get a connection error, run "ollama serve" in another terminal)</span>
 <span class="k">curl</span> http://localhost:11434/api/chat -d <span class="s">'{"model":"orcarouter/Qwen3.8-27B-Uncensored","messages":[{"role":"user","content":"hi"}],"stream":false}'</span></pre>
-    <p>Want to set this up for phone access without exposing anything to the internet, and compare a standard model with an uncensored one? The companion guide has the full walkthrough: <a href="https://inematds.github.io/ia-privada-3-niveis/guia/en/" target="_blank" rel="noopener">Private AI in 3 Levels</a>.</p>
+    <p>Want to set this up for access from your phone without exposing anything to the internet, and compare a standard model with an uncensored one? The related guide walks you through the whole process: <a href="https://inematds.github.io/ia-privada-3-niveis/guia/en/" target="_blank" rel="noopener">Private AI at 3 levels</a>.</p>
   </div></div>
 
   <div class="step"><div class="b">3</div><div>
@@ -321,7 +340,7 @@ print(r.choices[0].message.content)</pre>
     <p>Agent tools and editors that accept an “OpenAI-compatible endpoint” can use any of these models. The idea is always the same: three fields:</p>
     <ul>
       <li><strong>Base URL</strong>: <code>https://api.venice.ai/api/v1</code>, <code>https://api.abliteration.ai/v1</code>, or locally, <code>http://localhost:11434/v1</code>.</li>
-      <li><strong>Key</strong>: yours, supplied through an environment variable (Ollama requires this field locally but ignores it; its documentation uses <code>ollama</code>).</li>
+      <li><strong>Key</strong>: your own, stored in an environment variable (with local Ollama, the field is required but ignored; its documentation uses <code>ollama</code>).</li>
       <li><strong>Model name</strong>: the exact ID from the table, such as <code>venice-uncensored-1-2</code>.</li>
     </ul>
     <p>Concrete example: <a href="https://opencode.ai/docs/providers/" target="_blank" rel="noopener">opencode</a> accepts a custom provider in the <code>opencode.jsonc</code> file, using the format in its documentation. For Venice:</p>
@@ -337,7 +356,7 @@ print(r.choices[0].message.content)</pre>
     }
   }
 }</pre>
-    <p>The model appears as <code>venice/venice-uncensored-1-2</code>. With local Ollama, opencode discovers models automatically at <code>http://127.0.0.1:11434</code>. Other agent tools, such as Claude Code and Codex, are designed for their own company's models and may limit or reject external providers; check each tool's documentation before trying. abliteration.ai also supports Anthropic's format, which helps with tools that accept only that format. Remember: smaller models without guardrails make more mistakes on long agent tasks, so review every step they perform.</p>
+    <p>The model appears as <code>venice/venice-uncensored-1-2</code>. With local Ollama, opencode finds models automatically at <code>http://127.0.0.1:11434</code>. Other agent tools, such as Claude Code and Codex, are designed for their companies’ own models and may limit or reject outside providers; check each tool’s documentation before trying. abliteration.ai also supports Anthropic’s format, which helps with tools that accept only that format. Remember: a smaller model without guardrails makes more mistakes on long agent tasks, so review every step it takes.</p>
   </div></div>
 </div></section>
 
@@ -348,16 +367,16 @@ print(r.choices[0].message.content)</pre>
   <div class="grid g2">
     <div class="card">
       <ul class="check">
-        <li><svg width="20" height="20"><use href="#i-alert"/></svg><span><strong>Stated retention is not audited retention.</strong> Venice, abliteration.ai, Featherless, and orcarouter.ai say they do not store your requests. We could not find an independent audit of any of them.</span></li>
+        <li><svg width="20" height="20"><use href="#i-alert"/></svg><span><strong>Stated retention is not audited retention.</strong> Venice, abliteration.ai, Featherless, and orcarouter.ai say they do not store your requests. We found no independent audit of any of them.</span></li>
         <li><svg width="20" height="20"><use href="#i-alert"/></svg><span><strong>Do not send customer data, passwords, or documents.</strong> If the data is not yours or is sensitive, use a local model.</span></li>
-        <li><svg width="20" height="20"><use href="#i-alert"/></svg><span><strong>Check the model's privacy mode.</strong> At Venice, “Anonymized” models pass the request to a third-party provider, which may store it.</span></li>
-        <li><svg width="20" height="20"><use href="#i-alert"/></svg><span><strong>Read the terms.</strong> Many providers prohibit illegal and high-risk use, even when they offer uncensored models.</span></li>
+        <li><svg width="20" height="20"><use href="#i-alert"/></svg><span><strong>Check the model’s privacy mode.</strong> At Venice, “Anonymized” models send the request to a third-party provider, which may store it.</span></li>
+        <li><svg width="20" height="20"><use href="#i-alert"/></svg><span><strong>Read the terms.</strong> Several providers prohibit illegal and high-risk use, even when they sell unfiltered models.</span></li>
       </ul>
     </div>
     <div class="card">
       <h3><svg width="22" height="22"><use href="#i-check"/></svg>Responsible use</h3>
-      <p>Good uses include testing the security of <strong>your own</strong> app, organizing <strong>your own</strong> photos and files without a filter getting in the way, analyzing <strong>your own</strong> equipment and network, and researching how models work.</p>
-      <p>Removing a model's guardrails does not remove the law. You decide what to ask and what to do with the response, and you are responsible for it.</p>
+      <p>Good uses include testing the security of <strong>your own</strong> app, organizing <strong>your</strong> photos and files without a filter getting in the way, analyzing <strong>your own</strong> equipment and network, and researching how models work.</p>
+      <p>Removing a model’s guardrails does not remove the law. You decide what to ask and what to do with the answer, and you are responsible for it.</p>
     </div>
   </div>
 </div></section>
@@ -365,10 +384,10 @@ print(r.choices[0].message.content)</pre>
 <section id="relacionados"><div class="wrap">
   <span class="chip">Related guides from INEMA</span>
   <h2>Keep exploring</h2>
-  <p class="sub">Two guides that complement this one.</p>
+  <p class="sub">Two guides that complete this one.</p>
   <div class="grid g2">
-    <div class="card"><h3><svg width="22" height="22"><use href="#i-home"/></svg><a href="https://inematds.github.io/ia-privada-3-niveis/guia/en/" target="_blank" rel="noopener">Private AI in 3 Levels</a></h3><p>Set up local standard and uncensored AI, and access it securely from anywhere.</p></div>
-    <div class="card"><h3><svg width="22" height="22"><use href="#i-eye"/></svg><a href="https://inematds.github.io/ia-sem-censura-defensiva/guia/en/" target="_blank" rel="noopener">Defensive Uncensored AI</a></h3><p>A toolkit for connecting an abliterated model and using it to protect your own systems, always within an authorized scope.</p></div>
+    <div class="card"><h3><svg width="22" height="22"><use href="#i-home"/></svg><a href="https://inematds.github.io/ia-privada-3-niveis/guia/en/" target="_blank" rel="noopener">Private AI at 3 levels</a></h3><p>Set up local, standard, and uncensored AI, and securely access it from anywhere.</p></div>
+    <div class="card"><h3><svg width="22" height="22"><use href="#i-eye"/></svg><a href="https://inematds.github.io/ia-sem-censura-defensiva/guia/en/" target="_blank" rel="noopener">Defensive uncensored AI</a></h3><p>A toolkit for connecting an abliterated model and using it to secure your own systems, always within an authorized scope.</p></div>
   </div>
   <h3 style="margin:34px 0 8px;font-size:1rem">Technical references</h3>
   <ul class="refs">
