@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Provedores sem censura — onde usar IA sem filtro, quanto custa e o que conferir</title>
+<meta name="description" content="Guia INEMA de provedores de IA sem censura: modelos uncensored e abliterated por API, chat, GPU alugada ou no seu computador. Tabela comparativa com preços conferidos em 09/11/2026, privacidade declarada e passo a passo.">
+<link rel="alternate" hreflang="pt-BR" href="https://inematds.github.io/provedores-semcensura/guia/">
+<link rel="alternate" hreflang="en" href="https://inematds.github.io/provedores-semcensura/guia/en/">
+<link rel="alternate" hreflang="es" href="https://inematds.github.io/provedores-semcensura/guia/es/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0c0c10; --bg2:#14141b; --card:#16161e; --line:#272730;
+    --txt:#e9e9ee; --mut:#9a9aa6; --amb:#FACC15; --amb2:#f0c070; --sky:#38bdf8; --pro:#cbd5e1;
+    --bad:#f87171; --warnbg:rgba(250,204,21,.08);
+    color-scheme:dark;
+  }
+  body.light{
+    --bg:#f6f7f9; --bg2:#eceef2; --card:#ffffff; --line:#e1e3ea;
+    --txt:#1a1a22; --mut:#5b5b68; --amb:#a16207; --amb2:#a16207; --sky:#0369a1; --pro:#b45309;
+    --bad:#b91c1c; --warnbg:#FEF9C3;
+    color-scheme:light;
+  }
+  body.light .hero .glow{opacity:.5}
+  body.light pre{background:#0e0e14;color:#d6d6e0}
+  body.light pre .c{color:#8a8a98}
+  body.light pre .k{color:#f0c070}
+  body.light .amb{color:var(--txt);background:linear-gradient(transparent 55%,#FACC15 55%)}
+  body.light a{color:#854d0e;text-decoration:underline;text-decoration-color:#FACC15;text-decoration-thickness:3px}
+  body.light nav a,body.light .btn{text-decoration:none}
+  body.light .btn{background:#FACC15;color:#1a1206}
+  body.light .btn.ghost{background:transparent;color:var(--txt)}
+  body.light .step .b{background:#FACC15}
+  body.light .warn{border-left-color:#EAB308}
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--txt);font:16px/1.65 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  h1,h2,h3{font-family:Sora,sans-serif;line-height:1.15;margin:0}
+  a{color:var(--amb);text-decoration:none}
+  code,pre{font-family:"JetBrains Mono",monospace}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 22px}
+  .mut{color:var(--mut)} .amb{color:var(--amb)}
+  .chip{display:inline-block;font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--amb);font-weight:600;font-family:Sora}
+  nav{position:sticky;top:0;z-index:30;backdrop-filter:blur(12px);background:rgba(12,12,16,.78);border-bottom:1px solid var(--line)}
+  body.light nav{background:rgba(246,247,249,.85)}
+  nav .wrap{display:flex;align-items:center;gap:22px;height:60px}
+  nav .brand{display:flex;align-items:center;gap:8px;font-family:Sora;font-weight:800;letter-spacing:-.02em;color:var(--amb)}
+  nav .brand .emoji{font-size:1.25rem}
+  nav .sep{color:var(--mut);opacity:.45}
+  nav .inema{color:var(--sky);font-weight:600;font-size:.88rem;font-family:Sora}
+  nav .inema:hover{filter:brightness(1.15)}
+  nav .pro{color:var(--pro);font-weight:600;font-size:.88rem;font-family:Sora}
+  nav .pro:hover{filter:brightness(1.15)}
+  nav .clubpro{display:inline-flex;align-items:center;gap:6px}
+  nav .links{margin-left:auto;display:flex;align-items:center;gap:18px;font-size:.9rem}
+  nav .links a.sec{color:var(--mut)} nav .links a.sec:hover{color:var(--txt)}
+  .lang{display:inline-flex;gap:2px;font-family:Sora;font-size:.78rem}
+  .lang a{color:var(--mut);padding:.2em .45em;border-radius:6px} .lang a.on{color:var(--amb);background:rgba(250,204,21,.12)}
+  .tgl{background:var(--bg2);border:1px solid var(--line);color:var(--txt);width:38px;height:38px;border-radius:10px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;font-size:1.05rem}
+  .tgl:hover{border-color:var(--amb)}
+  .btn{display:inline-block;background:var(--amb);color:#1a1206;font-weight:600;padding:.6em 1.05em;border-radius:10px;font-family:Sora}
+  .btn.ghost{background:transparent;color:var(--txt);border:1px solid var(--line)}
+  @media(max-width:1020px){nav .links a.sec{display:none}}
+  @media(max-width:520px){nav .wrap{gap:8px;padding:8px 14px;height:auto;flex-wrap:wrap} nav .links{gap:8px;margin-left:0;width:100%;justify-content:space-between} nav .btn{padding:.45em .7em;font-size:.82rem} .tgl{width:34px;height:34px}}
+  .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+  .hero .glow{position:absolute;inset:-40% -20% auto auto;width:70%;height:600px;background:radial-gradient(closest-side,rgba(250,204,21,.18),transparent 70%);pointer-events:none}
+  .hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding:74px 22px}
+  .hero h1{font-size:clamp(2.2rem,5vw,3.5rem);font-weight:800;letter-spacing:-.025em}
+  .hero p.lead{font-size:1.18rem;color:var(--mut);margin:1.1em 0 1.6em;max-width:38ch}
+  .hero .cta{display:flex;gap:12px;flex-wrap:wrap}
+  .hero figure{margin:0;border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 80px -30px #000}
+  .hero figure img{width:100%;height:auto;display:block}
+  .resumo{padding:38px 0 34px;border-bottom:1px solid var(--line)}
+  .resumo p{font-size:1.12rem;line-height:1.7;max-width:74ch;margin:.55em 0 0}
+  @media(max-width:780px){.hero .wrap{grid-template-columns:1fr;padding:48px 22px}}
+  section{padding:62px 0;border-bottom:1px solid var(--line)}
+  section h2{font-size:clamp(1.5rem,3.4vw,2.1rem);font-weight:800;letter-spacing:-.02em}
+  section .sub{color:var(--mut);margin:.6em 0 2em;max-width:66ch}
+  .grid{display:grid;gap:16px}
+  .g3{grid-template-columns:repeat(3,1fr)} .g4{grid-template-columns:repeat(4,1fr)} .g2{grid-template-columns:repeat(2,1fr)}
+  @media(max-width:820px){.g3,.g4{grid-template-columns:1fr 1fr}}
+  @media(max-width:540px){.g2,.g3,.g4{grid-template-columns:1fr}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px}
+  .card h3{font-size:1.05rem;margin-bottom:.5em;display:flex;align-items:center;gap:10px}
+  .card h3 svg{flex:0 0 22px;color:var(--amb)}
+  body.light .card h3 svg{color:var(--txt)}
+  .card p{color:var(--mut);font-size:.95rem;margin:0}
+  .card p+p{margin-top:.6em}
+  .card .go{display:block;margin-top:.8em;font-size:.92rem;color:var(--txt)}
+  .card .go strong{color:var(--amb)}
+  body.light .card .go strong{color:var(--txt)}
+  pre{background:#0a0a0e;border:1px solid var(--line);border-radius:12px;padding:16px 18px;overflow:auto;font-size:.86rem;line-height:1.6;color:#d6d6e0}
+  pre .c{color:#7a7a88} pre .k{color:var(--amb2)} pre .s{color:#9ece6a}
+  .step{display:grid;grid-template-columns:46px minmax(0,1fr);gap:16px;margin-bottom:30px}
+  .step>div,.card{min-width:0}
+  p code,li code,td code{overflow-wrap:anywhere;font-size:.88em}
+  .step .b{width:46px;height:46px;border-radius:12px;background:var(--amb);color:#1a1206;font-family:Sora;font-weight:800;font-size:1.25rem;display:flex;align-items:center;justify-content:center}
+  .step h3{font-size:1.12rem;margin-bottom:.3em}
+  .step p{color:var(--mut);margin:.2em 0 .7em}
+  .step ul{color:var(--mut);margin:.2em 0 .8em;padding-left:1.2em}
+  .tbl{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--card)}
+  table{border-collapse:collapse;width:100%;min-width:980px;font-size:.88rem}
+  th,td{padding:12px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+  th{font-family:Sora;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--mut);background:var(--bg2);position:sticky;top:0}
+  tr:last-child td{border-bottom:none}
+  td strong{font-family:Sora}
+  td .tag{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:.1em .6em;font-size:.75rem;color:var(--mut);white-space:nowrap;margin-top:4px}
+  tr.top td{background:rgba(250,204,21,.05)}
+  .nc{color:var(--mut);font-style:italic}
+  .note{font-size:.88rem;color:var(--mut);margin:12px 0 0}
+  .warn{background:var(--warnbg);border:1px solid var(--line);border-left:4px solid var(--amb);border-radius:12px;padding:16px 18px;margin:18px 0}
+  .warn p{margin:0;color:var(--txt)}
+  .kv{display:grid;gap:10px}
+  .kv li{list-style:none}
+  ul.check{padding:0;margin:0}
+  ul.check li{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid var(--line);color:var(--txt)}
+  ul.check li:last-child{border:none}
+  ul.check li svg{flex:0 0 20px;color:var(--amb);margin-top:3px}
+  body.light ul.check li svg{color:var(--txt)}
+  .refs{font-size:.9rem;color:var(--mut)}
+  .refs li{margin:.3em 0}
+  footer{padding:46px 0;text-align:center;color:var(--mut);font-size:.9rem}
+  .pill{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:.3em .8em;font-size:.78rem;color:var(--mut);margin:4px}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-zap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></symbol>
+    <symbol id="i-coins" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="6"/><path d="M18.1 10.4A6 6 0 1 1 10.3 18"/><path d="M7 6h1v4"/></symbol>
+    <symbol id="i-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10.7 5.1A10 10 0 0 1 22 12a13 13 0 0 1-1.7 2.7"/><path d="M6.6 6.6A13.5 13.5 0 0 0 2 12a10 10 0 0 0 14.4 5.4"/><path d="M9.9 9.9a3 3 0 0 0 4.2 4.2"/><path d="m2 2 20 20"/></symbol>
+    <symbol id="i-sliders" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6"/></symbol>
+    <symbol id="i-scissors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4 8.1 15.9M14.5 14.5 20 20M8.1 8.1 12 12"/></symbol>
+    <symbol id="i-unlock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m12 2 10 5-10 5L2 7z"/><path d="m2 17 10 5 10-5M2 12l10 5 10-5"/></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h5"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></symbol>
+  </defs>
+</svg>
+
+<nav><div class="wrap">
+  <a class="brand" href="#top"><span class="emoji">🔓</span> provedores-semcensura</a>
+  <span class="sep">|</span>
+  <span class="clubpro">
+    <a class="inema" href="https://inema.club" target="_blank" rel="noopener">INEMA.CLUB</a>
+    <span class="sep">-</span>
+    <a class="pro" href="https://inema.pro" target="_blank" rel="noopener">PRO</a>
+  </span>
+  <div class="links">
+    <a class="sec" href="#oque">O que é</a>
+    <a class="sec" href="#provedores">Provedores</a>
+    <a class="sec" href="#escolher">Qual escolher</a>
+    <a class="sec" href="#guia">Passo a passo</a>
+    <a class="sec" href="#dados">Seus dados</a>
+    <span class="lang"><a class="on" href="./">PT</a><a href="en/">EN</a><a href="es/">ES</a></span>
+    <button class="tgl" id="themeToggle" aria-label="Alternar tema" title="Alternar tema">🌙</button>
+    <a class="btn" href="https://github.com/inematds/provedores-semcensura" target="_blank" rel="noopener">GitHub</a>
+  </div>
+</div></nav>
+
+<header class="hero" id="top">
+  <div class="glow"></div>
+  <div class="wrap">
+    <div>
+      <span class="chip">Guia INEMA · conferido em 09/11/2026</span>
+      <h1>IA sem censura: <span class="amb">onde usar</span>, quanto custa e o que conferir</h1>
+      <p class="lead">Sete caminhos lado a lado, da API pronta ao modelo rodando no seu computador, com preço, privacidade declarada e o que ninguém confirmou.</p>
+      <div class="cta">
+        <a class="btn" href="#provedores">Ver a tabela</a>
+        <a class="btn ghost" href="#guia">Começar o passo a passo</a>
+      </div>
+    </div>
+    <figure><img src="assets/banner.jpg" alt="Banner IA sem censura: onde usar, quanto custa e o que conferir"></figure>
+  </div>
+</header>
+
+<section id="resumo" class="resumo"><div class="wrap">
+  <span class="chip">Em resumo</span>
+  <p>Este guia mostra onde encontrar modelos de IA “sem censura”, ou seja, versões que não recusam pedidos. Serve para quem testa a segurança do próprio sistema, pesquisa ou só quer um assistente que não trave em assunto delicado. Você vê numa tabela os provedores por API, por chat, por GPU alugada e no seu próprio computador, com preço, privacidade declarada e se pedem identidade. Para usar, basta ler; os exemplos pedem uma conta no provedor escolhido ou o Ollama instalado.</p>
+</div></section>
+
+<section id="oque"><div class="wrap">
+  <span class="chip">O que é</span>
+  <h2>Três jeitos de tirar a trava, e o preço de cada um</h2>
+  <p class="sub">Um modelo comum aprende a recusar certos pedidos. Quem publica versões “sem censura” remove essa recusa de formas diferentes, e cada forma muda o que você recebe.</p>
+  <figure style="margin:0 0 26px;border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:0 30px 80px -30px #000"><img src="assets/banner-grade.jpg" alt="Banner com os tipos de provedor: API pronta, roteador, GPU alugada, local com Ollama, Hugging Face e privacidade" loading="lazy" style="width:100%;display:block"></figure>
+  <div class="grid g3">
+    <div class="card"><h3><svg width="22" height="22"><use href="#i-sliders"/></svg>Uncensored (fine-tune)</h3><p>O modelo é treinado de novo com exemplos sem recusa. É o caso da família Dolphin. Custa treino, mas o resultado costuma ser mais estável. Esta descrição do Dolphin é conhecimento geral da área; confira no model card de cada versão.</p></div>
+    <div class="card"><h3><svg width="22" height="22"><use href="#i-scissors"/></svg>Abliterated</h3><p>Ninguém treina nada. A técnica acha nos pesos a “direção de recusa” (uma única direção nas ativações do modelo, segundo o paper de Arditi et al., 2024) e a apaga por ortogonalização. É rápida e barata, por isso há centenas de versões assim.</p></div>
+    <div class="card"><h3><svg width="22" height="22"><use href="#i-unlock"/></svg>Jailbroken</h3><p>O modelo continua igual. O que muda é o pedido: um prompt montado para enganar as regras. Funciona até o provedor corrigir, quebra sem aviso e costuma violar os termos de uso. Este guia não trata de jailbreak.</p></div>
+  </div>
+  <div class="warn" style="margin-top:22px"><p><strong>O que você perde sem a trava.</strong> Modelo sem censura alucina mais e pode perder qualidade: o próprio artigo que popularizou a abliteration mostra queda nos benchmarks do Llama 3 8B depois do corte. Em análise de segurança ele também aponta falso positivo com confiança. E não há trava nenhuma: ele responde coisa perigosa ou errada do mesmo jeito. Confira tudo o que ele disser.</p></div>
+</div></section>
+
+<section id="huggingface"><div class="wrap">
+  <span class="chip">Onde achar os modelos</span>
+  <h2>Como achar modelos sem censura no Hugging Face</h2>
+  <p class="sub">Quase todo modelo aberto sem censura nasce no Hugging Face, o maior repositório público de modelos. Os provedores da tabela abaixo pegam muitos deles de lá.</p>
+  <div class="grid g3">
+    <div class="card"><h3><svg width="22" height="22"><use href="#i-search"/></svg>Busque pelo nome</h3><p>Em <a href="https://huggingface.co/models" target="_blank" rel="noopener">huggingface.co/models</a>, procure <code>abliterated</code>, <code>uncensored</code>, <code>heretic</code> (variante recente) ou <code>dolphin</code>. Ordene por downloads ou curtidas.</p></div>
+    <div class="card"><h3><svg width="22" height="22"><use href="#i-layers"/></svg>Mesmo modelo, várias versões</h3><p>O mesmo modelo base aparece em várias edições: autores diferentes (huihui-ai, mlabonne, orcarouter) e tamanhos diferentes (quantização). Para rodar no Ollama, filtre por <code>GGUF</code>.</p></div>
+    <div class="card"><h3><svg width="22" height="22"><use href="#i-file"/></svg>Leia o model card</h3><p>Antes de baixar, veja no card qual é o modelo base, o método usado, a quantização e se há benchmark. Números como “0% de recusa sem perda” são do autor, não de teste independente.</p></div>
+  </div>
+</div></section>
+
+<section id="provedores"><div class="wrap">
+  <span class="chip">Comparativo</span>
+  <h2>Tabela de provedores</h2>
+  <p class="sub">Preços em US$ por 1 milhão de tokens (entrada / saída), salvo indicação, conferidos em 09/11/2026 nas páginas públicas de cada provedor. Mudam sem aviso: confira no site antes de pagar. “Não confirmado” quer dizer que não achamos a informação, não que ela não exista.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>Provedor</th><th>Tipo</th><th>Modelos sem censura</th><th>Preço aprox.</th><th>Pede identidade?</th><th>Privacidade / retenção declarada</th><th>API compatível com OpenAI?</th><th>Observação</th></tr></thead>
+    <tbody>
+      <tr class="top"><td><strong>Venice</strong><br><span class="tag">destaque</span></td><td>API pronta + chat</td><td>DeepSeek V4.1 Flash 1017 Uncensored; Venice Uncensored 1.2; Gemma 4 Uncensored; versões E2EE e GLM 4.7 Flash Heretic</td><td>Uncensored 1.2: 0,20 / 0,90<br>Gemma 4 Uncensored: 0,1625 / 0,50<br>DeepSeek V4.1 Flash Uncensored: 0,33 / 1,32<br>Plano Pro: US$ 18/mês</td><td>Pede conta (e-mail ou carteira). Documento: <span class="nc">não confirmado, confira no site</span></td><td>Modo Private: retenção zero por contrato. TEE/E2EE em alguns modelos. Modo Anonymized: o provedor terceiro vê o pedido. Declarado, sem auditoria independente encontrada</td><td>Sim</td><td>Paga com cartão, cripto ou DIEM. A assinatura não inclui API ilimitada. O V4.1 Flash está marcado para sair</td></tr>
+      <tr><td><strong>abliteration.ai</strong></td><td>API pronta</td><td>Abliterated Large v2 (GLM-5.3 por baixo, segundo o site) e Large Flash</td><td>Planos de US$ 20, 50 e 200/mês (vira crédito). Por token: <span class="nc">não confirmado</span>; a Venice revende o Large v2 a 3,00 / 5,00</td><td>Cadastro por Google, GitHub, Microsoft ou e-mail; termos pedem 18+. Documento: <span class="nc">não confirmado</span></td><td>“Zero data retention”, prompts fora dos logs. Declarado pelo próprio site</td><td>Sim, e também a API Messages da Anthropic</td><td>Foco em segurança e red team. Termos proíbem uso ilegal</td></tr>
+      <tr><td><strong>orcarouter</strong> (perfil no Ollama)</td><td>Local</td><td>Qwen3.8-27B-Uncensored; Qwen3.8-Flash-Next-Uncensored (MLX, Apple Silicon)</td><td>Grátis (o custo é o seu hardware)</td><td>Não, só baixar</td><td>Roda na sua máquina</td><td>Sim, pelo Ollama em <code>localhost:11434/v1</code></td><td>Não confunda com o gateway orcarouter.ai, da mesma equipe, que não é sem censura</td></tr>
+      <tr><td><strong>OpenRouter</strong></td><td>Roteador</td><td>Dolphin Mistral 24B Venice Edition; Hermes 4 405B; Cydonia 24B; Skyfall 36B; Magnum v4 72B; Euryale 70B</td><td>Dolphin Venice: 0,20 / 0,90<br>Hermes 4 405B: 1,00 / 3,00<br>Magnum v4 72B: 2,50 / 5,00</td><td>Pede conta. Cripto: <span class="nc">não confirmado</span></td><td>Depende do provedor por trás de cada modelo; há controles de logging e ZDR na conta</td><td>Sim</td><td>Hermes, Magnum e Euryale são menos restritivos, não necessariamente 100% sem recusa</td></tr>
+      <tr><td><strong>Featherless</strong></td><td>API pronta (assinatura)</td><td>Catálogo de 40.000+ modelos do Hugging Face; quais são sem censura: <span class="nc">não confirmado</span></td><td>Chat: US$ 25/mês (tokens ilimitados, contexto 32K)<br>Developer: US$ 50/mês em créditos</td><td>Conta + pagamento</td><td>Política diz que não coleta prompts nem respostas (texto de 10/06/2024)</td><td><span class="nc">Não confirmado</span></td><td>O plano Chat proíbe uso por API ou automação; para API, use o Developer</td></tr>
+      <tr><td><strong>RunPod</strong></td><td>GPU alugada</td><td>Qualquer modelo que você subir (vLLM, Ollama)</td><td>Por hora: A100 80GB US$ 1,79; H100 PCIe US$ 2,89; H100 SXM US$ 3,99; RTX Pro 6000 US$ 2,49</td><td>Conta + cartão</td><td>Você controla a máquina e os logs</td><td>Sim, se rodar vLLM ou Ollama</td><td>Cobrança por segundo. Desligue o pod quando parar</td></tr>
+      <tr><td><strong>Local com Ollama</strong></td><td>Local</td><td>huihui-ai, orcarouter, mlabonne e outros em GGUF</td><td>Grátis + hardware</td><td>Não</td><td>Total: nada sai do seu computador</td><td>Sim, em <code>localhost:11434/v1</code></td><td>Mais privado e mais barato no longo prazo; a qualidade depende da sua GPU</td></tr>
+    </tbody>
+  </table></div>
+  <p class="note">Também olhamos Novita, Together e DeepInfra: não achamos modelos sem censura nas páginas públicas. O Hugging Face Inference Endpoints aluga GPU por hora para subir qualquer modelo. Vast.ai não foi pesquisado.</p>
+</div></section>
+
+<section id="escolher"><div class="wrap">
+  <span class="chip">Qual escolher</span>
+  <h2>Comece pela sua situação</h2>
+  <p class="sub">Não existe o melhor provedor. Existe o que serve para o que você quer fazer agora.</p>
+  <div class="grid g4">
+    <div class="card"><h3><svg width="22" height="22"><use href="#i-zap"/></svg>Quero testar rápido</h3><p>Crie conta na Venice e use o chat ou a API com o Venice Uncensored 1.2. É o caminho com menos passos.</p><span class="go">Vá para: <strong>Venice</strong></span></div>
+    <div class="card"><h3><svg width="22" height="22"><use href="#i-home"/></svg>Não quero mandar nada para fora</h3><p>Rode no seu computador com o Ollama e um modelo abliterated. Nada sai da máquina. Precisa de GPU razoável para modelos maiores.</p><span class="go">Vá para: <strong>Local com Ollama</strong></span></div>
+    <div class="card"><h3><svg width="22" height="22"><use href="#i-coins"/></svg>Preciso de API barata</h3><p>Venice (Gemma 4 Uncensored a 0,1625 / 0,50) ou OpenRouter (Dolphin Venice a 0,20 / 0,90). Ambos aceitam o formato da OpenAI.</p><span class="go">Vá para: <strong>Venice ou OpenRouter</strong></span></div>
+    <div class="card"><h3><svg width="22" height="22"><use href="#i-eye"/></svg>Quero privacidade máxima</h3><p>Local é o único caminho em que você não depende da palavra de ninguém. Se precisar de nuvem, prefira GPU alugada sob seu controle ou os modos E2EE da Venice.</p><span class="go">Vá para: <strong>Local, RunPod ou Venice E2EE</strong></span></div>
+  </div>
+</div></section>
+
+<section id="guia"><div class="wrap">
+  <span class="chip">Passo a passo</span>
+  <h2>Três jeitos de começar hoje</h2>
+  <p class="sub">Os exemplos usam endereços conferidos nas documentações públicas em 09/11/2026. Nenhuma chave aparece aqui: você cria a sua no site do provedor e guarda numa variável de ambiente.</p>
+
+  <div class="step"><div class="b">1</div><div>
+    <h3>Chamar a Venice pela API compatível com OpenAI</h3>
+    <p>A Venice segue a especificação da OpenAI, então qualquer biblioteca da OpenAI funciona trocando o endereço. Crie a chave no painel da Venice e guarde no terminal:</p>
+<pre><span class="k">export</span> VENICE_API_KEY=<span class="s">"cole-sua-chave-aqui"</span>   <span class="c"># nunca no código nem no git</span>
+
+<span class="k">curl</span> https://api.venice.ai/api/v1/chat/completions \
+  -H <span class="s">"Authorization: Bearer $VENICE_API_KEY"</span> \
+  -H <span class="s">"Content-Type: application/json"</span> \
+  -d <span class="s">'{"model":"venice-uncensored-1-2","messages":[{"role":"user","content":"Explique o que é abliteration em 3 frases."}]}'</span></pre>
+    <p>O mesmo em Python, com a biblioteca <code>openai</code> (<code>pip install openai</code>):</p>
+<pre><span class="k">import</span> os
+<span class="k">from</span> openai <span class="k">import</span> OpenAI
+
+cliente = OpenAI(
+    base_url=<span class="s">"https://api.venice.ai/api/v1"</span>,
+    api_key=os.environ[<span class="s">"VENICE_API_KEY"</span>],
+)
+r = cliente.chat.completions.create(
+    model=<span class="s">"deepseek-v4-1-flash-1017-uncensored"</span>,  <span class="c"># ou venice-uncensored-1-2, gemma-4-uncensored</span>
+    messages=[{<span class="s">"role"</span>: <span class="s">"user"</span>, <span class="s">"content"</span>: <span class="s">"Liste 3 riscos de um modelo sem censura."</span>}],
+)
+print(r.choices[0].message.content)</pre>
+    <p>Alguns modelos são só para planos pagos e devolvem erro 401 <code>PRO_ONLY_MODEL</code>. Os ids mudam: confira a lista atual em <a href="https://docs.venice.ai/overview/pricing" target="_blank" rel="noopener">docs.venice.ai</a>. A abliteration.ai funciona do mesmo jeito, com <code>base_url="https://api.abliteration.ai/v1"</code> e a chave dela.</p>
+  </div></div>
+
+  <div class="step"><div class="b">2</div><div>
+    <h3>Rodar no seu computador com o Ollama</h3>
+    <p>Com o <a href="https://ollama.com" target="_blank" rel="noopener">Ollama</a> instalado, um comando baixa e abre o modelo. Nada sai da máquina. O Qwen3.8-27B pede uma GPU boa; se a sua for menor, procure uma versão menor (huihui-ai publica várias em GGUF).</p>
+<pre><span class="k">ollama run</span> orcarouter/Qwen3.8-27B-Uncensored   <span class="c"># baixa na primeira vez, depois abre o chat</span>
+
+<span class="c"># o mesmo modelo pela API local do Ollama</span>
+<span class="k">curl</span> http://localhost:11434/api/chat -d <span class="s">'{"model":"orcarouter/Qwen3.8-27B-Uncensored","messages":[{"role":"user","content":"oi"}],"stream":false}'</span></pre>
+    <p>Quer montar isso com acesso pelo celular, sem expor nada na internet, e comparar modelo normal com sem censura? O guia irmão faz o passo a passo completo: <a href="https://inematds.github.io/ia-privada-3-niveis/guia/" target="_blank" rel="noopener">IA privada em 3 níveis</a>.</p>
+  </div></div>
+
+  <div class="step"><div class="b">3</div><div>
+    <h3>Ligar o modelo numa ferramenta de agente</h3>
+    <p>Ferramentas de agente e editores que aceitam um “endpoint compatível com OpenAI” conseguem usar qualquer um desses modelos. A ideia é sempre a mesma, três campos:</p>
+    <ul>
+      <li><strong>Endereço base</strong>: <code>https://api.venice.ai/api/v1</code>, <code>https://api.abliteration.ai/v1</code> ou, local, <code>http://localhost:11434/v1</code>.</li>
+      <li><strong>Chave</strong>: a sua, por variável de ambiente (no Ollama local o campo é obrigatório, mas ignorado: a doc dele usa <code>ollama</code>).</li>
+      <li><strong>Nome do modelo</strong>: o id exato da tabela, como <code>venice-uncensored-1-2</code>.</li>
+    </ul>
+    <p>Onde fica cada campo muda de ferramenta para ferramenta (Claude Code, Codex, opencode e outras): procure “custom provider”, “base URL” ou “OpenAI compatible” na documentação dela. A abliteration.ai também fala o formato da Anthropic, o que ajuda em ferramentas que só aceitam esse. Lembre: modelo menor e sem trava erra mais em tarefa longa de agente, então revise cada passo que ele executar.</p>
+  </div></div>
+</div></section>
+
+<section id="dados"><div class="wrap">
+  <span class="chip">Confira antes de usar</span>
+  <h2>Para onde vão os seus dados</h2>
+  <p class="sub">“Sem censura” não quer dizer “sem registro”. Leia isto antes de colar qualquer coisa num provedor.</p>
+  <div class="grid g2">
+    <div class="card">
+      <ul class="check">
+        <li><svg width="20" height="20"><use href="#i-alert"/></svg><span><strong>Retenção declarada não é retenção auditada.</strong> Venice, abliteration.ai, Featherless e orcarouter.ai dizem não guardar seus pedidos. Não achamos auditoria independente de nenhum deles.</span></li>
+        <li><svg width="20" height="20"><use href="#i-alert"/></svg><span><strong>Não mande dado de cliente, senha nem documento.</strong> Se o dado não é seu ou é sensível, use o modelo local.</span></li>
+        <li><svg width="20" height="20"><use href="#i-alert"/></svg><span><strong>Veja o modo de privacidade do modelo.</strong> Na Venice, modelos “Anonymized” passam o pedido para um provedor terceiro, que pode guardar.</span></li>
+        <li><svg width="20" height="20"><use href="#i-alert"/></svg><span><strong>Leia os termos.</strong> Vários provedores proíbem uso ilegal e de alto risco, mesmo vendendo modelo sem filtro.</span></li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3><svg width="22" height="22"><use href="#i-check"/></svg>Uso responsável</h3>
+      <p>Bons usos: testar a segurança do <strong>seu próprio</strong> app, organizar as <strong>suas</strong> fotos e arquivos sem que um filtro trave, analisar o <strong>seu</strong> equipamento e a sua rede, pesquisar como os modelos funcionam.</p>
+      <p>Tirar a trava do modelo não tira a lei. Quem decide o que pedir e o que fazer com a resposta é você, e a responsabilidade também é sua.</p>
+    </div>
+  </div>
+</div></section>
+
+<section id="relacionados"><div class="wrap">
+  <span class="chip">Relacionados no INEMA</span>
+  <h2>Continue por aqui</h2>
+  <p class="sub">Dois guias que completam este.</p>
+  <div class="grid g2">
+    <div class="card"><h3><svg width="22" height="22"><use href="#i-home"/></svg><a href="https://inematds.github.io/ia-privada-3-niveis/guia/" target="_blank" rel="noopener">IA privada em 3 níveis</a></h3><p>Monte sua IA local, normal e sem censura, e acesse de qualquer lugar com segurança.</p></div>
+    <div class="card"><h3><svg width="22" height="22"><use href="#i-eye"/></svg><a href="https://inematds.github.io/ia-sem-censura-defensiva/guia/" target="_blank" rel="noopener">IA sem censura defensiva</a></h3><p>Kit para ligar um modelo abliterated e usá-lo na segurança defensiva dos seus próprios sistemas, sempre com escopo autorizado.</p></div>
+  </div>
+  <h3 style="margin:34px 0 8px;font-size:1rem">Referências técnicas</h3>
+  <ul class="refs">
+    <li>Arditi et al., “Refusal in Language Models Is Mediated by a Single Direction” — <a href="https://arxiv.org/abs/2406.11717" target="_blank" rel="noopener">arxiv.org/abs/2406.11717</a></li>
+    <li>Abliteration explicada no blog do Hugging Face — <a href="https://huggingface.co/blog/mlabonne/abliteration" target="_blank" rel="noopener">huggingface.co/blog/mlabonne/abliteration</a></li>
+    <li>Venice: <a href="https://docs.venice.ai/overview/pricing" target="_blank" rel="noopener">preços</a> e <a href="https://docs.venice.ai/overview/privacy" target="_blank" rel="noopener">privacidade</a> · abliteration.ai: <a href="https://docs.abliteration.ai/api/openai-compatibility" target="_blank" rel="noopener">compatibilidade OpenAI</a> · <a href="https://ollama.com/orcarouter" target="_blank" rel="noopener">orcarouter no Ollama</a> · <a href="https://docs.ollama.com/api/openai-compatibility" target="_blank" rel="noopener">Ollama compatível com OpenAI</a> · <a href="https://openrouter.ai/docs/guides/privacy/logging" target="_blank" rel="noopener">OpenRouter: logging</a> · <a href="https://featherless.ai/pricing" target="_blank" rel="noopener">Featherless: preços</a> · <a href="https://www.runpod.io/pricing" target="_blank" rel="noopener">RunPod: preços</a></li>
+  </ul>
+</div></section>
+
+<footer>
+  <div class="wrap">
+    <div class="pill">Venice</div><div class="pill">abliteration.ai</div><div class="pill">OpenRouter</div><div class="pill">Featherless</div><div class="pill">RunPod</div><div class="pill">Ollama</div><div class="pill">Hugging Face</div>
+    <p style="margin-top:18px">provedores-semcensura · conteúdo aberto do INEMA, conferido em 09/11/2026 ·
+      <a href="https://github.com/inematds/provedores-semcensura">inematds/provedores-semcensura</a> ·
+      <a href="https://inema.club">INEMA.CLUB</a></p>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var KEY='provedores-semcensura-theme';
+    var b=document.body, t=document.getElementById('themeToggle');
+    try{ if(localStorage.getItem(KEY)==='light'){ b.classList.add('light'); t.textContent='☀️'; } }catch(e){}
+    t.addEventListener('click',function(){
+      var light=b.classList.toggle('light');
+      t.textContent=light?'☀️':'🌙';
+      try{ localStorage.setItem(KEY, light?'light':'dark'); }catch(e){}
+    });
+  })();
+</script>
+</body>
+</html>
