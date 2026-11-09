@@ -14,4 +14,6 @@ Página landing + guia (PT/EN/ES) sobre provedores de IA sem censura (uncensored
 When I correct you, or you catch yourself making a mistake: before continuing, add the lesson as a one-line rule at the TOP of the Lessons section below, so it never happens again.
 
 ## Lessons
+- Tradução de guia: pedir explicitamente para traduzir textos de exemplo e prompts DENTRO dos <pre>; conferir EN/ES por grep de palavras PT nos blocos de código. (09/11/2026)
+- Aposentadoria de modelo: conferir o id exato no Deprecation Tracker do provedor (deepseek-v4-1-flash ≠ deepseek-v4-1-flash-1017-uncensored). Preço de plano: dizer se é anual ou mensal. RunPod: rotular Secure × Community. (09/11/2026)
 - Base URL de provedor no exemplo de código só depois de conferir na doc pública (Venice = `https://api.venice.ai/api/v1`; Ollama local = `http://localhost:11434/v1`, chave obrigatória mas ignorada). (09/11/2026)

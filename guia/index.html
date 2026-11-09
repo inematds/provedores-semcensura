@@ -121,6 +121,15 @@
   ul.check li svg{flex:0 0 20px;color:var(--amb);margin-top:3px}
   body.light ul.check li svg{color:var(--txt)}
   .refs{font-size:.9rem;color:var(--mut)}
+  .gloss{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 18px;margin:0 0 18px}
+  .gloss summary{cursor:pointer;font-family:Sora;font-weight:600}
+  .gloss dl{margin:12px 0 0;display:grid;grid-template-columns:max-content 1fr;gap:8px 18px}
+  .gloss dt{font-family:Sora;font-weight:600;color:var(--amb)}
+  body.light .gloss dt{color:var(--txt)}
+  .gloss dd{margin:0;color:var(--mut);font-size:.92rem}
+  @media(max-width:600px){.gloss dl{grid-template-columns:1fr}.gloss dd{margin-bottom:6px}}
+  .swipe{display:none;font-size:.85rem;color:var(--mut);margin:0 0 8px}
+  @media(max-width:1020px){.swipe{display:block}}
   .refs li{margin:.3em 0}
   footer{padding:46px 0;text-align:center;color:var(--mut);font-size:.9rem}
   .pill{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:.3em .8em;font-size:.78rem;color:var(--mut);margin:4px}
@@ -214,15 +223,29 @@
   <span class="chip">Comparativo</span>
   <h2>Tabela de provedores</h2>
   <p class="sub">Preços em US$ por 1 milhão de tokens (entrada / saída), salvo indicação, conferidos em 09/11/2026 nas páginas públicas de cada provedor. Mudam sem aviso: confira no site antes de pagar. “Não confirmado” quer dizer que não achamos a informação, não que ela não exista.</p>
+  <details class="gloss"><summary>Glossário rápido dos termos da tabela</summary>
+    <dl>
+      <dt>Private / Anonymized</dt><dd>Modos de privacidade da Venice. Private: o modelo roda em GPU da Venice ou de parceiro com retenção zero por contrato. Anonymized: o pedido vai para um provedor terceiro, que vê o conteúdo e pode guardar.</dd>
+      <dt>TEE</dt><dd>Ambiente de execução confiável: um pedaço isolado do hardware que nem o dono do servidor consegue espiar, com atestado de que está rodando o código certo.</dd>
+      <dt>E2EE</dt><dd>Criptografia de ponta a ponta: o pedido sai cifrado do seu lado e só é aberto dentro desse hardware isolado.</dd>
+      <dt>ZDR</dt><dd>Zero data retention: o provedor promete não guardar pedidos nem respostas.</dd>
+      <dt>Quantização</dt><dd>Guardar os pesos do modelo com menos precisão (Q4 = 4 bits por peso, por exemplo). O arquivo fica bem menor e cabe em GPU menor, com alguma perda de qualidade.</dd>
+      <dt>GGUF</dt><dd>Formato de arquivo de modelo quantizado usado pelo Ollama e pelo llama.cpp.</dd>
+      <dt>MLX</dt><dd>Biblioteca da Apple para rodar modelos nos chips Apple Silicon (M1 em diante).</dd>
+      <dt>vLLM</dt><dd>Servidor de código aberto para rodar modelos em GPU com alta vazão; também expõe API compatível com OpenAI.</dd>
+      <dt>Red team</dt><dd>Equipe ou teste que ataca o próprio sistema, com autorização, para achar falhas antes de alguém de fora.</dd>
+    </dl>
+  </details>
+  <p class="swipe">Deslize a tabela para o lado →</p>
   <div class="tbl"><table>
     <thead><tr><th>Provedor</th><th>Tipo</th><th>Modelos sem censura</th><th>Preço aprox.</th><th>Pede identidade?</th><th>Privacidade / retenção declarada</th><th>API compatível com OpenAI?</th><th>Observação</th></tr></thead>
     <tbody>
-      <tr class="top"><td><strong>Venice</strong><br><span class="tag">destaque</span></td><td>API pronta + chat</td><td>DeepSeek V4.1 Flash 1017 Uncensored; Venice Uncensored 1.2; Gemma 4 Uncensored; versões E2EE e GLM 4.7 Flash Heretic</td><td>Uncensored 1.2: 0,20 / 0,90<br>Gemma 4 Uncensored: 0,1625 / 0,50<br>DeepSeek V4.1 Flash Uncensored: 0,33 / 1,32<br>Plano Pro: US$ 18/mês</td><td>Pede conta (e-mail ou carteira). Documento: <span class="nc">não confirmado, confira no site</span></td><td>Modo Private: retenção zero por contrato. TEE/E2EE em alguns modelos. Modo Anonymized: o provedor terceiro vê o pedido. Declarado, sem auditoria independente encontrada</td><td>Sim</td><td>Paga com cartão, cripto ou DIEM. A assinatura não inclui API ilimitada. O V4.1 Flash está marcado para sair</td></tr>
+      <tr class="top"><td><strong>Venice</strong><br><span class="tag">destaque</span></td><td>API pronta + chat</td><td>DeepSeek V4.1 Flash 1017 Uncensored; Venice Uncensored 1.2; Gemma 4 Uncensored; versões E2EE e GLM 4.7 Flash Heretic</td><td>Uncensored 1.2: 0,20 / 0,90<br>Gemma 4 Uncensored: 0,1625 / 0,50<br>DeepSeek V4.1 Flash Uncensored: 0,33 / 1,32<br>Plano Pro: US$ 18/mês só no anual (US$ 216/ano); o site indica economia de US$ 36 no anual, o que dá cerca de US$ 21 no mês a mês</td><td>Pede conta (e-mail ou carteira). Documento: <span class="nc">não confirmado, confira no site</span></td><td>Modo Private: retenção zero por contrato. TEE/E2EE em alguns modelos. Modo Anonymized: o provedor terceiro vê o pedido. Declarado, sem auditoria independente encontrada</td><td>Sim</td><td>Paga com cartão, cripto ou DIEM. A assinatura não inclui API ilimitada. Quem sai em 15/11/2026 é o <code>deepseek-v4-1-flash</code> (sem “1017”); o <code>deepseek-v4-1-flash-1017-uncensored</code> continua e é o modelo padrão da API</td></tr>
       <tr><td><strong>abliteration.ai</strong></td><td>API pronta</td><td>Abliterated Large v2 (GLM-5.3 por baixo, segundo o site) e Large Flash</td><td>Planos de US$ 20, 50 e 200/mês (vira crédito). Por token: <span class="nc">não confirmado</span>; a Venice revende o Large v2 a 3,00 / 5,00</td><td>Cadastro por Google, GitHub, Microsoft ou e-mail; termos pedem 18+. Documento: <span class="nc">não confirmado</span></td><td>“Zero data retention”, prompts fora dos logs. Declarado pelo próprio site</td><td>Sim, e também a API Messages da Anthropic</td><td>Foco em segurança e red team. Termos proíbem uso ilegal</td></tr>
       <tr><td><strong>orcarouter</strong> (perfil no Ollama)</td><td>Local</td><td>Qwen3.8-27B-Uncensored; Qwen3.8-Flash-Next-Uncensored (MLX, Apple Silicon)</td><td>Grátis (o custo é o seu hardware)</td><td>Não, só baixar</td><td>Roda na sua máquina</td><td>Sim, pelo Ollama em <code>localhost:11434/v1</code></td><td>Não confunda com o gateway orcarouter.ai, da mesma equipe, que não é sem censura</td></tr>
       <tr><td><strong>OpenRouter</strong></td><td>Roteador</td><td>Dolphin Mistral 24B Venice Edition; Hermes 4 405B; Cydonia 24B; Skyfall 36B; Magnum v4 72B; Euryale 70B</td><td>Dolphin Venice: 0,20 / 0,90<br>Hermes 4 405B: 1,00 / 3,00<br>Magnum v4 72B: 2,50 / 5,00</td><td>Pede conta. Cripto: <span class="nc">não confirmado</span></td><td>Depende do provedor por trás de cada modelo; há controles de logging e ZDR na conta</td><td>Sim</td><td>Hermes, Magnum e Euryale são menos restritivos, não necessariamente 100% sem recusa</td></tr>
       <tr><td><strong>Featherless</strong></td><td>API pronta (assinatura)</td><td>Catálogo de 40.000+ modelos do Hugging Face; quais são sem censura: <span class="nc">não confirmado</span></td><td>Chat: US$ 25/mês (tokens ilimitados, contexto 32K)<br>Developer: US$ 50/mês em créditos</td><td>Conta + pagamento</td><td>Política diz que não coleta prompts nem respostas (texto de 10/06/2024)</td><td><span class="nc">Não confirmado</span></td><td>O plano Chat proíbe uso por API ou automação; para API, use o Developer</td></tr>
-      <tr><td><strong>RunPod</strong></td><td>GPU alugada</td><td>Qualquer modelo que você subir (vLLM, Ollama)</td><td>Por hora: A100 80GB US$ 1,79; H100 PCIe US$ 2,89; H100 SXM US$ 3,99; RTX Pro 6000 US$ 2,49</td><td>Conta + cartão</td><td>Você controla a máquina e os logs</td><td>Sim, se rodar vLLM ou Ollama</td><td>Cobrança por segundo. Desligue o pod quando parar</td></tr>
+      <tr><td><strong>RunPod</strong></td><td>GPU alugada</td><td>Qualquer modelo que você subir (vLLM, Ollama)</td><td>Por hora, Secure Cloud: A100 80GB US$ 1,79; H100 PCIe US$ 2,89; H100 SXM US$ 3,99; RTX Pro 6000 US$ 2,49<br>Community Cloud, a partir de: A100 US$ 1,19–1,39; H100 PCIe US$ 1,99; H100 SXM US$ 2,69; RTX Pro 6000 US$ 1,69</td><td>Conta + cartão</td><td>Você controla a máquina e os logs</td><td>Sim, se rodar vLLM ou Ollama</td><td>Cobrança por segundo. Community Cloud é mais barata, com máquinas de terceiros; Secure Cloud fica em data centers parceiros. Desligue o pod quando parar</td></tr>
       <tr><td><strong>Local com Ollama</strong></td><td>Local</td><td>huihui-ai, orcarouter, mlabonne e outros em GGUF</td><td>Grátis + hardware</td><td>Não</td><td>Total: nada sai do seu computador</td><td>Sim, em <code>localhost:11434/v1</code></td><td>Mais privado e mais barato no longo prazo; a qualidade depende da sua GPU</td></tr>
     </tbody>
   </table></div>
@@ -248,7 +271,7 @@
 
   <div class="step"><div class="b">1</div><div>
     <h3>Chamar a Venice pela API compatível com OpenAI</h3>
-    <p>A Venice segue a especificação da OpenAI, então qualquer biblioteca da OpenAI funciona trocando o endereço. Crie a chave no painel da Venice e guarde no terminal:</p>
+    <p>A Venice segue a especificação da OpenAI, então qualquer biblioteca da OpenAI funciona trocando o endereço. Crie a chave em <a href="https://venice.ai/settings/api" target="_blank" rel="noopener">venice.ai/settings/api</a> e guarde no terminal. A API consome créditos: a assinatura dá só uma franquia mensal pequena (Pro: US$ 1; contas grátis: nenhuma), então coloque saldo antes. Sem saldo, a API responde erro <code>402</code> <code>INSUFFICIENT_BALANCE</code>.</p>
 <pre><span class="k">export</span> VENICE_API_KEY=<span class="s">"cole-sua-chave-aqui"</span>   <span class="c"># nunca no código nem no git</span>
 
 <span class="k">curl</span> https://api.venice.ai/api/v1/chat/completions \
@@ -273,8 +296,20 @@ print(r.choices[0].message.content)</pre>
 
   <div class="step"><div class="b">2</div><div>
     <h3>Rodar no seu computador com o Ollama</h3>
-    <p>Com o <a href="https://ollama.com" target="_blank" rel="noopener">Ollama</a> instalado, um comando baixa e abre o modelo. Nada sai da máquina. O Qwen3.8-27B pede uma GPU boa; se a sua for menor, procure uma versão menor (huihui-ai publica várias em GGUF).</p>
-<pre><span class="k">ollama run</span> orcarouter/Qwen3.8-27B-Uncensored   <span class="c"># baixa na primeira vez, depois abre o chat</span>
+    <p>Primeiro instale o Ollama. No Windows e no Mac, baixe em <a href="https://ollama.com/download" target="_blank" rel="noopener">ollama.com/download</a>. No Linux:</p>
+<pre><span class="k">curl</span> -fsSL https://ollama.com/install.sh | sh</pre>
+    <p><strong>Regra de memória:</strong> o modelo precisa caber na memória da placa de vídeo (VRAM), com uma folga de 1 a 2 GB para a conversa. O arquivo do Ollama já mostra o tamanho: o <code>orcarouter/Qwen3.8-27B-Uncensored</code> (versão padrão, quantizada) tem 18 GB, então pede uma GPU de 24 GB. Sem GPU ele roda na memória do computador, mas bem mais devagar.</p>
+    <p>Escolha pela sua máquina (tamanhos conferidos no registro do Ollama em 09/11/2026):</p>
+<pre><span class="c"># GPU de 24 GB ou mais (arquivo de 18 GB)</span>
+<span class="k">ollama run</span> orcarouter/Qwen3.8-27B-Uncensored
+
+<span class="c"># GPU de 8 GB (arquivo de 5 GB)</span>
+<span class="k">ollama run</span> huihui_ai/qwen3-abliterated:8b
+
+<span class="c"># só CPU ou notebook simples (arquivo de 2,5 GB)</span>
+<span class="k">ollama run</span> huihui_ai/qwen3-abliterated:4b</pre>
+    <p>Na primeira vez o comando baixa o modelo; depois abre o chat direto. Para sair, digite <code>/bye</code>.</p>
+<pre>
 
 <span class="c"># o mesmo modelo pela API local do Ollama</span>
 <span class="k">curl</span> http://localhost:11434/api/chat -d <span class="s">'{"model":"orcarouter/Qwen3.8-27B-Uncensored","messages":[{"role":"user","content":"oi"}],"stream":false}'</span></pre>
@@ -289,7 +324,20 @@ print(r.choices[0].message.content)</pre>
       <li><strong>Chave</strong>: a sua, por variável de ambiente (no Ollama local o campo é obrigatório, mas ignorado: a doc dele usa <code>ollama</code>).</li>
       <li><strong>Nome do modelo</strong>: o id exato da tabela, como <code>venice-uncensored-1-2</code>.</li>
     </ul>
-    <p>Onde fica cada campo muda de ferramenta para ferramenta (Claude Code, Codex, opencode e outras): procure “custom provider”, “base URL” ou “OpenAI compatible” na documentação dela. A abliteration.ai também fala o formato da Anthropic, o que ajuda em ferramentas que só aceitam esse. Lembre: modelo menor e sem trava erra mais em tarefa longa de agente, então revise cada passo que ele executar.</p>
+    <p>Exemplo concreto: o <a href="https://opencode.ai/docs/providers/" target="_blank" rel="noopener">opencode</a> aceita um provedor próprio no arquivo <code>opencode.jsonc</code>, no formato da documentação dele. Para a Venice:</p>
+<pre>{
+  <span class="s">"$schema"</span>: <span class="s">"https://opencode.ai/config.json"</span>,
+  <span class="s">"providers"</span>: {
+    <span class="s">"venice"</span>: {
+      <span class="s">"name"</span>: <span class="s">"Venice"</span>,
+      <span class="s">"env"</span>: [<span class="s">"VENICE_API_KEY"</span>],
+      <span class="s">"package"</span>: <span class="s">"@opencode/ai/providers/openai-compatible"</span>,
+      <span class="s">"settings"</span>: { <span class="s">"baseURL"</span>: <span class="s">"https://api.venice.ai/api/v1"</span> },
+      <span class="s">"models"</span>: { <span class="s">"venice-uncensored-1-2"</span>: {} }
+    }
+  }
+}</pre>
+    <p>O modelo aparece como <code>venice/venice-uncensored-1-2</code>. Com o Ollama local o opencode acha os modelos sozinho em <code>http://127.0.0.1:11434</code>. Outras ferramentas de agente, como Claude Code e Codex, são feitas para os modelos da própria empresa e podem limitar ou não aceitar provedores de fora; confira na documentação de cada uma antes de tentar. A abliteration.ai também fala o formato da Anthropic, o que ajuda em ferramentas que só aceitam esse. Lembre: modelo menor e sem trava erra mais em tarefa longa de agente, então revise cada passo que ele executar.</p>
   </div></div>
 </div></section>
 
